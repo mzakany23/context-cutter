@@ -1,4 +1,4 @@
-module context-cutter
+module github.com/mzakany23/context-cutter
 
 go 1.23.2
 

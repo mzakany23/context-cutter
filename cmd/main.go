@@ -1,9 +1,10 @@
 package main
 
 import (
-	cutter "context-cutter/pkg"
 	"fmt"
 	"os"
+
+	cutter "github.com/mzakany23/context-cutter/pkg"
 
 	"github.com/spf13/cobra"
 )
