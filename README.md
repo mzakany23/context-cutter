@@ -65,19 +65,19 @@ To use Context Cutter, run the following command:
    ./context-cutter --input large_file.txt
    ```
 
-2. Split a file into 5MB chunks:
+2. Split a file into 100KB chunks:
    ```
-   ./context-cutter --input large_file.txt --size 5242880
-   ```
-
-3. Split a file and specify an output directory:
-   ```
-   ./context-cutter --input large_file.txt --output ./chunks
+   ./context-cutter --input large_file.txt --size 102400
    ```
 
-4. Combine all options:
+3. Split a file into 100KB chunks and specify an output directory:
    ```
-   ./context-cutter --input large_file.txt --output ./chunks --size 10485760
+   ./context-cutter --input large_file.txt --output ./chunks --size 102400
+   ```
+
+4. Combine all options (100KB chunks):
+   ```
+   ./context-cutter --input large_file.txt --output ./chunks --size 102400
    ```
 
 After running the command, Context Cutter will split the input file into chunks and save them in the specified (or auto-generated) output directory. Each chunk will be named `chunk_XXXX.txt`, where `XXXX` is a zero-padded sequential number.
