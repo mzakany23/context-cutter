@@ -60,24 +60,34 @@ To use Context Cutter, run the following command:
 
 ### Examples:
 
-1. Split a file into 1MB chunks (default):
+1. Split a file into 1MB chunks:
    ```
-   ./context-cutter --input large_file.txt
-   ```
-
-2. Split a file into 100KB chunks:
-   ```
-   ./context-cutter --input large_file.txt --size 102400
+   ./file-cutter -i large_file.txt -s 1048576
    ```
 
-3. Split a file into 100KB chunks and specify an output directory:
+2. Split a file into 10MB chunks and specify an output directory:
    ```
-   ./context-cutter --input large_file.txt --output ./chunks --size 102400
+   ./file-cutter -i large_file.txt -s 10485760 -o output_chunks
    ```
 
-4. Combine all options (100KB chunks):
+3. Split a file into a specific number of files:
    ```
-   ./context-cutter --input large_file.txt --output ./chunks --size 102400
+   ./file-cutter -i large_file.txt -f 5
+   ```
+
+4. Split a file into 3 files and specify an output directory:
+   ```
+   ./file-cutter -i large_file.txt -f 3 -o output_chunks
+   ```
+
+5. Use short flag names:
+   ```
+   ./file-cutter -i large_file.txt -s 5242880 -o chunks
+   ```
+
+6. Split a file into 1MB chunks (default behavior):
+   ```
+   ./file-cutter -i large_file.txt
    ```
 
 After running the command, Context Cutter will split the input file into chunks and save them in the specified (or auto-generated) output directory. Each chunk will be named `chunk_XXXX.txt`, where `XXXX` is a zero-padded sequential number.
