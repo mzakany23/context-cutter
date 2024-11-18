@@ -10,6 +10,11 @@ import (
 )
 
 func SplitFile(inputFile, outputDir string, chunkSize int64) error {
+	// Validate chunk size
+	if chunkSize <= 0 {
+		return fmt.Errorf("chunk size must be positive")
+	}
+
 	// Open the input file
 	file, err := os.Open(inputFile)
 	if err != nil {
@@ -62,6 +67,11 @@ func SplitFile(inputFile, outputDir string, chunkSize int64) error {
 }
 
 func SplitFileByCount(inputFile, outputDir string, fileCount int) error {
+	// Validate file count
+	if fileCount <= 0 {
+		return fmt.Errorf("file count must be positive")
+	}
+
 	// Open the input file
 	file, err := os.Open(inputFile)
 	if err != nil {
@@ -75,6 +85,14 @@ func SplitFileByCount(inputFile, outputDir string, fileCount int) error {
 		return fmt.Errorf("failed to get file info: %w", err)
 	}
 	fileSize := fileInfo.Size()
+
+	// Validate file count and size
+	if fileCount <= 0 {
+		return fmt.Errorf("file count must be positive")
+	}
+	if int64(fileCount) > fileSize {
+		return fmt.Errorf("file count (%d) cannot be larger than file size (%d)", fileCount, fileSize)
+	}
 
 	// Calculate chunk size
 	chunkSize := fileSize / int64(fileCount)
